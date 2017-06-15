@@ -10,7 +10,7 @@
     "native-base": "2.0.13",
     "react": "~15.4.1",
     "react-native": "0.42.3",
-    "react-native-popover": "github:jeanregisser/react-native-popover#8a443d2699b404d55c324edc8536255150340789",
+    "react-native-actionsheet": "^2.1.0",
     "react-native-router-flux": "^3.38.0"
   },
   "devDependencies": {

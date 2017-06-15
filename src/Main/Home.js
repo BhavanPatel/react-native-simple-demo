@@ -18,16 +18,31 @@ import {
   Content
 } from 'native-base';
 import {Actions} from 'react-native-router-flux';
-import Popover from 'react-native-popover';
 import SideNavBar from './SideMenu';
 const userImg = require('../assets/user.png');
+
+import ActionSheet from 'react-native-actionsheet';
+const CANCEL_INDEX = 0;
+const DESTRUCTIVE_INDEX = 3;
+const options = ['Cancel', 'Option 1', 'Option 2', 'Show Detail'];
+const title = 'Select One';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isVisible: false
-    };
+    this.handlePress = this.handlePress.bind(this);
+    this.showActionSheet = this.showActionSheet.bind(this);
+  }
+
+  showActionSheet() {
+    this.ActionSheet.show();
+  }
+
+  handlePress(i) {
+    console.log(i);
+    if (i === 3) {
+      Actions.Detail();
+    }
   }
 
   openDrawer() {
@@ -87,7 +102,7 @@ class Home extends Component {
                   <Text note>Doing what you like will always keep you happy . .</Text>
                 </Body>
                 <Right>
-                  <Button ref="abc" transparent onPress={this._onOption.bind(this)}>
+                  <Button transparent onPress={this.showActionSheet}>
                     <Icon style={{
                       color: 'lightgrey'
                     }} name='md-more'/>
@@ -103,7 +118,7 @@ class Home extends Component {
                   <Text note>Doing what you like will always keep you happy . .</Text>
                 </Body>
                 <Right>
-                  <Button transparent onPress={this._onOption.bind(this)}>
+                  <Button transparent onPress={this.showActionSheet}>
                     <Icon style={{
                       color: 'lightgrey'
                     }} name='md-more'/>
@@ -119,7 +134,7 @@ class Home extends Component {
                   <Text note>Doing what you like will always keep you happy . .</Text>
                 </Body>
                 <Right>
-                  <Button transparent onPress={this._onOption.bind(this)}>
+                  <Button transparent onPress={this.showActionSheet}>
                     <Icon style={{
                       color: 'lightgrey'
                     }} name='md-more'/>
@@ -135,7 +150,7 @@ class Home extends Component {
                   <Text note>Doing what you like will always keep you happy . .</Text>
                 </Body>
                 <Right>
-                  <Button transparent onPress={this._onOption.bind(this)}>
+                  <Button transparent onPress={this.showActionSheet}>
                     <Icon style={{
                       color: 'lightgrey'
                     }} name='md-more'/>
@@ -151,7 +166,87 @@ class Home extends Component {
                   <Text note>Doing what you like will always keep you happy . .</Text>
                 </Body>
                 <Right>
-                  <Button transparent onPress={this._onOption.bind(this)}>
+                  <Button transparent onPress={this.showActionSheet}>
+                    <Icon style={{
+                      color: 'lightgrey'
+                    }} name='md-more'/>
+                  </Button>
+                </Right>
+              </ListItem>
+              <ListItem avatar>
+                <Left>
+                  <Thumbnail source={userImg}/>
+                </Left>
+                <Body>
+                  <Text>ABCD WXYZ</Text>
+                  <Text note>Doing what you like will always keep you happy . .</Text>
+                </Body>
+                <Right>
+                  <Button transparent onPress={this.showActionSheet}>
+                    <Icon style={{
+                      color: 'lightgrey'
+                    }} name='md-more'/>
+                  </Button>
+                </Right>
+              </ListItem>
+              <ListItem avatar>
+                <Left>
+                  <Thumbnail source={userImg}/>
+                </Left>
+                <Body>
+                  <Text>WXYZ ABCD</Text>
+                  <Text note>Doing what you like will always keep you happy . .</Text>
+                </Body>
+                <Right>
+                  <Button transparent onPress={this.showActionSheet}>
+                    <Icon style={{
+                      color: 'lightgrey'
+                    }} name='md-more'/>
+                  </Button>
+                </Right>
+              </ListItem>
+              <ListItem avatar>
+                <Left>
+                  <Thumbnail source={userImg}/>
+                </Left>
+                <Body>
+                  <Text>EFGH IJKL</Text>
+                  <Text note>Doing what you like will always keep you happy . .</Text>
+                </Body>
+                <Right>
+                  <Button transparent onPress={this.showActionSheet}>
+                    <Icon style={{
+                      color: 'lightgrey'
+                    }} name='md-more'/>
+                  </Button>
+                </Right>
+              </ListItem>
+              <ListItem avatar>
+                <Left>
+                  <Thumbnail source={userImg}/>
+                </Left>
+                <Body>
+                  <Text>MNOP QRST</Text>
+                  <Text note>Doing what you like will always keep you happy . .</Text>
+                </Body>
+                <Right>
+                  <Button transparent onPress={this.showActionSheet}>
+                    <Icon style={{
+                      color: 'lightgrey'
+                    }} name='md-more'/>
+                  </Button>
+                </Right>
+              </ListItem>
+              <ListItem avatar>
+                <Left>
+                  <Thumbnail source={userImg}/>
+                </Left>
+                <Body>
+                  <Text>UVWX YZAB</Text>
+                  <Text note>Doing what you like will always keep you happy . .</Text>
+                </Body>
+                <Right>
+                  <Button transparent onPress={this.showActionSheet}>
                     <Icon style={{
                       color: 'lightgrey'
                     }} name='md-more'/>
@@ -160,6 +255,7 @@ class Home extends Component {
               </ListItem>
             </List>
           </Content>
+          <ActionSheet ref={o => this.ActionSheet = o} title={title} options={options} cancelButtonIndex={CANCEL_INDEX} onPress={this.handlePress}/>
         </Container>
       </Drawer>
     );
